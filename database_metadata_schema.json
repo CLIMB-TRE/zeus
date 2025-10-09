@@ -1,0 +1,59 @@
+{
+    "$id": "https://example.com/person.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Metadata for the mSCAPE viral database",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "unique_accession": {
+                "type": "string",
+                "description": "The unique accession number for the viral assembly. e.g. the contig accession number. Must match the accession in the FASTA file EXACTLY!",
+                "uniqueItems": true
+            },
+            "seq_description": {
+                "type": "string",
+                "description": "The description of the viral assembly. Must match the description in the FASTA file EXACTLY! (This is the text after the first space in the FASTA header line) If there is no description in the FASTA file then this field may be empty."
+            },
+            "tax_id": {
+                "type": "integer",
+                "description": "The taxonomic ID of the viral assembly."
+            },
+            "human_readable": {
+                "type": "string",
+                "description": "Human readable (scientific) name for the taxon of the viral assembly. Must EXACTLY match the name in the NCBI taxonomy database version used."
+            },
+            "hcid": {
+                "type": "string",
+                "description": "If the virus is considered a high consequence infection disease (HCID) by the UKHSA then this field should be 'True' if not then 'False'.",
+                "pattern": "^(True|False)$"
+            },
+            "source": {
+                "type": "string",
+                "description": "The source of the viral assembly. e.g. GenBank, RefSeq, Internal to UKHSA etc."
+            },
+            "source_accession": {
+                "type": "string",
+                "description": "The accession of the viral assembly in the source database. e.g. if the source is GenBank then this would be the GenBank accession number."
+            },
+            "sequence_md5": {
+                "type": "string",
+                "description": "The MD5 checksum of the linearised sequence in the FASTA file meaning the sequence should be in a single line with no line breaks or whitespace.",
+                "pattern": "^[a-fA-F0-9]{32}$"
+            },
+            "sequence_length": {
+                "type": "integer",
+                "description": "The length of the sequence in the FASTA file."
+            }
+        },
+        "required": [
+            "unique_accession",
+            "tax_id",
+            "human_readable",
+            "hcid",
+            "source",
+            "sequence_md5",
+            "sequence_length"
+        ]
+    }
+}
