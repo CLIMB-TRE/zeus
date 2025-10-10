@@ -23,11 +23,6 @@
                 "type": "string",
                 "description": "Human readable (scientific) name for the taxon of the viral assembly. Must EXACTLY match the name in the NCBI taxonomy database version used."
             },
-            "hcid": {
-                "type": "string",
-                "description": "If the virus is considered a high consequence infection disease (HCID) by the UKHSA then this field should be 'True' if not then 'False'.",
-                "pattern": "^(True|False)$"
-            },
             "source": {
                 "type": "string",
                 "description": "The source of the viral assembly. e.g. GenBank, RefSeq, Internal to UKHSA etc."
@@ -50,7 +45,6 @@
             "unique_accession",
             "tax_id",
             "human_readable",
-            "hcid",
             "source",
             "sequence_md5",
             "sequence_length"
