@@ -75,7 +75,7 @@ def run(args):
 
     # Check that all taxonomic IDs in the metadata are valid
     for row in metadata:
-        taxon_id = row.get("tax_id")
+        taxon_id = row.get("taxon_id")
         if taxon_id not in name_lookup.keys():
             raise ValueError(
                 f"taxon_id: {taxon_id} does not exist in the taxonomy database provided."
@@ -97,9 +97,9 @@ def run(args):
                 f"FASTA header {name} does not match unique_accession {metadata_row['unique_accession']} in metadata. This may be due to ordering issues or incorrect metadata / FASTA header."
             )
 
-        if Levenshtein.distance(metadata_row["seq_description"], comment) > 5:
+        if metadata_row["accession_description"] != comment:
             raise ValueError(
-                f"FASTA description for {name} does not match seq_description '{metadata_row['seq_description']}' in metadata."
+                f"FASTA description for {name} does not match accession_description '{metadata_row['accession_description']}' in metadata."
             )
 
         if metadata_row["sequence_md5"] != md5_checksum(seq):

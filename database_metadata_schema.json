@@ -11,11 +11,11 @@
                 "description": "The unique accession number for the viral assembly. e.g. the contig accession number. Must match the accession in the FASTA file EXACTLY!",
                 "uniqueItems": true
             },
-            "seq_description": {
+            "accession_description": {
                 "type": "string",
                 "description": "The description of the viral assembly. Must match the description in the FASTA file EXACTLY! (This is the text after the first space in the FASTA header line) If there is no description in the FASTA file then this field may be empty."
             },
-            "tax_id": {
+            "taxon_id": {
                 "type": "integer",
                 "description": "The taxonomic ID of the viral assembly."
             },
