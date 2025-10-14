@@ -43,7 +43,7 @@
         },
         "required": [
             "unique_accession",
-            "tax_id",
+            "taxon_id",
             "human_readable",
             "source",
             "sequence_md5",
