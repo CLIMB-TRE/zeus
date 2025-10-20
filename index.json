@@ -1,0 +1,29 @@
+{
+    "title": "Index JSON for the mSCAPE viral alignment database",
+    "index_version": "1.0.0",
+    "database_schema": "https://raw.githubusercontent.com/CLIMB-TRE/zeus/refs/heads/main/database_index_schema.json",
+    "databases": [
+        "viral_alignment_db"
+    ],
+    "database_descriptions": {
+        "viral_alignment_db": "An index of viral assemblies used in the mSCAPE viral alignment database."
+    },
+    "data": {
+        "viral_alignment_db": {
+            "latest_version": "0.1.0",
+            "latest_version_date": "2025-10-20",
+            "versions": {
+                "0.1.0": {
+                    "date": "2025-10-20",
+                    "description": "Initial release of the viral alignment database index.",
+                    "methods_summary": "Database constructed from NCBI RefSeq viral genomes (on date 2025-09-29). Sequence taxa were matched to the NCBI taxonomy (version 2023-10-01). Database was constructed with 'https://raw.githubusercontent.com/CLIMB-TRE/zeus/refs/heads/main/database_creator.py'",
+                    "taxonomy_version": "2023-10-01",
+                    "fasta_uri": "s3://mscape-zeus-databases/viral_alignment_db/v0.1.0/viral_alignment_db_v010.fasta",
+                    "fasta_md5": "bc0cee58861af463602eec870ce80d93",
+                    "metadata_uri": "s3://mscape-zeus-databases/viral_alignment_db/v0.1.0/viral_alignment_db_v010_metadata.tsv",
+                    "metadata_md5": "211fe13c8fe7f6f4177fad65089f70fc"
+                }
+            }
+        }
+    }
+}

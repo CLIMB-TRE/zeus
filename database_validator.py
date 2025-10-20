@@ -5,7 +5,6 @@ import csv
 import pyfastx
 import hashlib
 import pandas as pd
-import Levenshtein
 
 
 def md5_checksum(sequence: str) -> str:
@@ -61,6 +60,25 @@ def validate_metadata_tsv(metadata: Path, schema_path: Path) -> None:
     jsonschema.validate(instance=metadata_df.to_dict("records"), schema=schema)
 
 
+def validate_index_json(index: Path, schema_path: Path) -> None:
+    """Validate the database index JSON file against the provided JSON schema.
+    Args:
+        index (Path): The path to the database index JSON file.
+        schema_path (Path): The path to the JSON schema file.
+
+        Raises:
+            jsonschema.ValidationError: If the data does not conform to the schema.
+            jsonschema.SchemaError: If the schema itself is invalid.
+    """
+    with open(schema_path, "r") as f:
+        schema = json.load(f)
+
+    with open(index, "r") as f:
+        index_data = json.load(f)
+
+    jsonschema.validate(instance=index_data, schema=schema)
+
+
 def run(args):
 
     name_lookup = import_taxonomy_names(args.names_dmp)
@@ -71,14 +89,19 @@ def run(args):
         metadata = [x for x in reader]
 
     # Basic structural validation of the metadata TSV
-    validate_metadata_tsv(args.metadata, args.schema)
+    validate_metadata_tsv(args.metadata, args.metadata_schema)
+    print(f"Metadata TSV {args.metadata} passed schema validation.")
+
+    # Basic structural validation of the database index JSON
+    validate_index_json(args.index, args.index_schema)
+    print(f"Database index JSON {args.index} passed schema validation.")
 
     # Check that all taxonomic IDs in the metadata are valid
     for row in metadata:
         taxon_id = row.get("taxon_id")
         if taxon_id not in name_lookup.keys():
             raise ValueError(
-                f"taxon_id: {taxon_id} does not exist in the taxonomy database provided."
+                f"taxon_id: {taxon_id} does not exist in the taxonomy database provided. Observed in record: {row}"
             )
 
         if row["human_readable"] != name_lookup[taxon_id]:
@@ -133,16 +156,28 @@ def main():
         help="Path to the names.dmp file for taxonomy lookup.",
     )
     parser.add_argument(
-        "--schema",
+        "--metadata_schema",
         type=Path,
         required=True,
-        help="Path to the JSON schema file for validation.",
+        help="Path to the JSON schema file for metadata TSV validation.",
+    )
+    parser.add_argument(
+        "--index_schema",
+        type=Path,
+        required=True,
+        help="Path to the JSON schema file for database index JSON validation.",
     )
     parser.add_argument(
         "--metadata",
         type=Path,
         required=True,
         help="Path to the metadata TSV file to validate.",
+    )
+    parser.add_argument(
+        "--index",
+        type=Path,
+        required=True,
+        help="Path to the database index JSON file to validate.",
     )
     parser.add_argument(
         "--fasta",

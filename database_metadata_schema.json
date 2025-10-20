@@ -1,5 +1,5 @@
 {
-    "$id": "https://example.com/person.schema.json",
+    "$id": "https://raw.githubusercontent.com/CLIMB-TRE/zeus/refs/heads/main/database_metadata_schema.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Metadata for the mSCAPE viral database",
     "type": "array",
