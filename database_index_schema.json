@@ -84,6 +84,9 @@
                                         "description": {
                                             "type": "string"
                                         },
+                                        "methods_summary": {
+                                            "type": "string"
+                                        },
                                         "taxonomy_version": {
                                             "type": "string",
                                             "format": "date"
