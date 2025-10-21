@@ -98,15 +98,18 @@ def run(args: argparse.Namespace):
                     break
 
         if organism_name not in tax_id_name_lookup:
-            closest_matches = name_tree.find(re.sub(r"\(.*\)", "", organism_name), 5)
-            if closest_matches:
-                best_match = min(closest_matches, key=lambda x: x[0])
-                matched_name = best_match[1]
-                taxon_id = name_tax_id_lookup[matched_name]
+            matches = sorted(
+                name_tree.find(
+                    re.sub(r"\(.*\)", "", organism_name), len(organism_name) // 8
+                )
+            )
+            if matches:
+                best_match = matches[0]
+                taxon_id = name_tax_id_lookup[best_match[1]]
                 if args.verbose:
                     print(
                         f"Info: Organism name '{organism_name}' not found in taxonomy. "
-                        f"Using closest match '{matched_name}' with taxon ID {taxon_id}.",
+                        f"Using closest match '{best_match[1]}' with taxon ID {taxon_id}.",
                         file=sys.stderr,
                     )
             else:
