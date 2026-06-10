@@ -39,6 +39,10 @@
             "sequence_length": {
                 "type": "integer",
                 "description": "The length of the sequence in the FASTA file."
+            },
+            "segment": {
+                "type": ["string", "null"],
+                "description": "The segment identifier for segmented viruses (e.g. '1', '2', 'L', 'S'). Corresponds to the /segment qualifier in the NCBI GenBank record. Null or absent for non-segmented viruses."
             }
         },
         "required": [

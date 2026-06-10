@@ -1,6 +1,7 @@
 {
     "title": "Index JSON for the mSCAPE viral alignment database",
-    "index_version": "1.0.0",
+    "schema_version": "1.1.0",
+    "index_version": "1.1.0",
     "database_schema": "https://raw.githubusercontent.com/CLIMB-TRE/zeus/refs/heads/main/database_index_schema.json",
     "databases": [
         "viral_alignment_db"
@@ -32,6 +33,20 @@
                     "fasta_md5": "8baa30db5097a0237fd0c90a14feaa97",
                     "metadata_uri": "s3://mscape-zeus-databases/viral_alignment_db/v0.2.0/viral_alignment_db_v020_metadata.tsv",
                     "metadata_md5": "396ae427123e1acea37faa3ee3c268f1"
+                },
+                "0.3.0": {
+                    "date": "2026-06-10",
+                    "description": "Third release of viral alignment database index with updated taxonomy, improved matching logic, also, added new segment metadata field for segmented viruses.",
+                    "methods_summary": "Database constructed from NCBI RefSeq viral genomes (on date 2026-04-13). Sequence taxa were matched to the NCBI taxonomy (version 2026-06-01).",
+                    "taxonomy_version": "2026-06-01",
+                    "fasta_uri": "s3://mscape-zeus-databases/viral_alignment_db/v0.3.0/viral_alignment_db_v030.fasta",
+                    "fasta_md5": "90bb66accce6bd7e3e084435af242c9f",
+                    "metadata_uri": "s3://mscape-zeus-databases/viral_alignment_db/v0.3.0/viral_alignment_db_v030_metadata.tsv",
+                    "metadata_md5": "85826b4b6a49486fe8c24962e4b969c2",
+                    "mm2_index_uri": "s3://mscape-zeus-databases/viral_alignment_db/v0.3.0/viral_alignment_db_v030_minimap2_index.mm2",
+                    "mm2_index_md5": "7d05febf313cbcd3ee5cb792e1fcd117",
+                    "bwa_mem2_index_uri": "s3://mscape-zeus-databases/viral_alignment_db/v0.3.0/viral_alignment_db_v030_bwa_mem2_index.tar.gz",
+                    "bwa_mem2_index_md5": "d2915aae13cacadf26612645e6046239"
                 }
             }
         }

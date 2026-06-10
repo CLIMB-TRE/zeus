@@ -6,6 +6,7 @@
     "type": "object",
     "required": [
         "title",
+        "schema_version",
         "index_version",
         "database_schema",
         "databases",
@@ -15,6 +16,11 @@
     "properties": {
         "title": {
             "type": "string"
+        },
+        "schema_version": {
+            "type": "string",
+            "description": "The version of the zeus schema (corresponds to the repo release tag).",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
         },
         "index_version": {
             "type": "string",
@@ -104,6 +110,24 @@
                                             "format": "uri"
                                         },
                                         "metadata_md5": {
+                                            "type": "string",
+                                            "pattern": "^[a-fA-F0-9]{32}$"
+                                        },
+                                        "mm2_index_uri": {
+                                            "type": "string",
+                                            "format": "uri",
+                                            "description": "URI for the prebuilt minimap2 (.mmi) index."
+                                        },
+                                        "mm2_index_md5": {
+                                            "type": "string",
+                                            "pattern": "^[a-fA-F0-9]{32}$"
+                                        },
+                                        "bwa_mem2_index_uri": {
+                                            "type": "string",
+                                            "format": "uri",
+                                            "description": "URI for the prebuilt bwa-mem2 index tarball (contains .0123, .amb, .ann, .bwt.2bit.64, .pac)."
+                                        },
+                                        "bwa_mem2_index_md5": {
                                             "type": "string",
                                             "pattern": "^[a-fA-F0-9]{32}$"
                                         }
