@@ -47,6 +47,20 @@
                     "mm2_index_md5": "7d05febf313cbcd3ee5cb792e1fcd117",
                     "bwa_mem2_index_uri": "s3://mscape-zeus-databases/viral_refseq/v0.3.0/viral_alignment_db_v030_bwa_mem2_index.tar.gz",
                     "bwa_mem2_index_md5": "d2915aae13cacadf26612645e6046239"
+                },
+                "0.4.0": {
+                    "date": "2026-09-01",
+                    "description": "Fourth release of viral RefSeq database index with updated taxonomy, further improved matching logic.",
+                    "methods_summary": "Database constructed from NCBI RefSeq viral genomes (on date 2026-08-10). Sequence taxa were matched to the NCBI taxonomy (version 2026-03-01).",
+                    "taxonomy_version": "2026-03-01",
+                    "fasta_uri": "s3://mscape-zeus-databases/viral_refseq/v0.4.0/viral_alignment_db_v040.fasta",
+                    "fasta_md5": "56a94078be15986dd6398043ddb1563b",
+                    "metadata_uri": "s3://mscape-zeus-databases/viral_refseq/v0.4.0/viral_alignment_db_v040_metadata.tsv",
+                    "metadata_md5": "30e9e020d0b0696dce3f4b2571c4a871",
+                    "mm2_index_uri": "s3://mscape-zeus-databases/viral_refseq/v0.4.0/viral_alignment_db_v040.mmi",
+                    "mm2_index_md5": "07fde697e644803d715fe20a6275ab61",
+                    "bwa_mem2_index_uri": "s3://mscape-zeus-databases/viral_refseq/v0.4.0/viral_alignment_db_v040_bwa_mem2_index.tar.gz",
+                    "bwa_mem2_index_md5": "85c0a33859d82734eaef4ebdd16d8c26"
                 }
             }
         }
